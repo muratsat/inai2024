@@ -40,6 +40,8 @@ export const createTable = pgTableCreator((name) => `inai2024_${name}`);
 
 export const driver = createTable("driver", {
   id: serial("id").primaryKey(),
+  name: varchar("name").notNull(),
+  licensePlate: varchar("license_plate").unique(),
 });
 
 export const driverRelations = relations(driver, ({ many }) => ({
