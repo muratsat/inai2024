@@ -5,7 +5,7 @@ import {
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
-import { driver } from "@/server/db/schema";
+import { driver, review } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 
 export const driverRouter = createTRPCRouter({
@@ -22,8 +22,33 @@ export const driverRouter = createTRPCRouter({
   getById: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ ctx, input }) => {
-      return await ctx.db.query.driver.findFirst({
+      console.log("Searching for driver ", input.id);
+      return ctx.db.query.driver.findFirst({
         where: eq(driver.id, input.id),
       });
+    }),
+
+  addReview: publicProcedure
+    .input(
+      z.object({
+        driverId: z.number(),
+        comment: z.string().max(255),
+        stars: z.number().min(1).max(5),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const targetDriver = await ctx.db.query.driver.findFirst({
+        where: eq(driver.id, input.driverId),
+      });
+      if (targetDriver) {
+        console.log(
+          `Received review ${input.driverId}, ${input.comment}, ${input.stars} stars`,
+        );
+        return ctx.db.insert(review).values({
+          driverId: input.driverId,
+          stars: input.stars,
+          comment: input.comment,
+        });
+      }
     }),
 });

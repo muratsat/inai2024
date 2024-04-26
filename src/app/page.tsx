@@ -6,7 +6,10 @@ export default async function Home() {
           Safe <span className="text-[hsl(280,100%,70%)]">Bus</span>
         </h1>
         <div className="flex flex-col items-center gap-2">
-          <div className="flex flex-col items-center justify-center gap-4"></div>
+          <p className="text-2xl">
+            To add a review about your driver, scan the qr code located in the
+            cabin
+          </p>
         </div>
       </div>
     </main>

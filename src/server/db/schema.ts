@@ -50,7 +50,7 @@ export const driverRelations = relations(driver, ({ many }) => ({
 
 export const review = createTable("review", {
   id: serial("id").primaryKey(),
-  content: varchar("content", { length: 256 }),
+  comment: varchar("comment", { length: 256 }),
   stars: integer("stars").notNull(),
   driverId: integer("driver_id").notNull(),
 });
