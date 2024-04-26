@@ -89,7 +89,9 @@ export function RateDriverForm({ id, name }: RateDriverProps) {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button type="submit">Send review</Button>
+          <Button type="submit">
+            {reviewQuery.isPending ? "Loading" : "Send review"}
+          </Button>
         </CardFooter>
       </form>
     </Card>

@@ -15,9 +15,11 @@ import { Label } from "@/components/ui/label";
 import { api } from "@/trpc/react";
 import { useState } from "react";
 import { toast } from "sonner";
-import { RefreshCcw } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export function AddDriverForm() {
+  const router = useRouter();
+
   const [name, setName] = useState("");
   const [licensePlate, setLicensePlate] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -31,6 +33,7 @@ export function AddDriverForm() {
       toast("Success");
       setName("");
       setLicensePlate("");
+      router.refresh();
     },
     onError: (e) => {
       console.log(e.message);

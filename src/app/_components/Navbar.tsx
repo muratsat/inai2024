@@ -14,6 +14,7 @@ export default async function Navbar() {
         <Link href="/" className="hidden hover:underline md:block">
           <Bus />
         </Link>
+        <Link href="/drivers"> All Drivers</Link>
         {session && <Link href="/drivers/add"> Add drivers </Link>}
       </div>
 
