@@ -28,6 +28,7 @@ const ratings = [1, 2, 3, 4, 5];
 export function RateDriverForm({ id, name }: RateDriverProps) {
   const [comment, setComment] = useState("");
   const [stars, setStars] = useState(1);
+  const [error, setError] = useState<string | null>(null);
 
   const reviewQuery = api.driver.addReview.useMutation({
     onSuccess: () => {
@@ -42,12 +43,18 @@ export function RateDriverForm({ id, name }: RateDriverProps) {
         <CardTitle>
           Rate driver <b>{name} </b>
         </CardTitle>
-        <CardDescription>Deploy your new project in one-click.</CardDescription>
+        <CardDescription>
+          Describe what you do and don't like about the driver
+        </CardDescription>
       </CardHeader>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           console.log("Driver", id, ",", stars, "stars", comment);
+          if (comment.length > 200) {
+            setError("Your comment is too long");
+            return;
+          }
           reviewQuery.mutate({
             comment: comment,
             driverId: id,
@@ -64,6 +71,7 @@ export function RateDriverForm({ id, name }: RateDriverProps) {
                 placeholder="Your comment"
                 value={comment}
                 onChange={(e) => {
+                  setError(null);
                   setComment(e.target.value);
                 }}
               />
@@ -86,11 +94,12 @@ export function RateDriverForm({ id, name }: RateDriverProps) {
                 ))}
               </div>
             </div>
+            {error && <h1 className="text-red-800"> {error} </h1>}
           </div>
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button type="submit">
-            {reviewQuery.isPending ? "Loading" : "Send review"}
+            {reviewQuery.isPending ? "Loading..." : "Send review"}
           </Button>
         </CardFooter>
       </form>

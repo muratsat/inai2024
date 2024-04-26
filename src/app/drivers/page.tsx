@@ -2,6 +2,8 @@ import { api } from "@/trpc/server";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { QrCode } from "lucide-react";
 
 export default async function Home() {
   return (
@@ -20,13 +22,18 @@ async function DriversList() {
   return (
     <div className="container flex max-w-5xl flex-col justify-center gap-10 px-4 py-16">
       {drivers.map((driver) => (
-        <Link
-          key={driver.id}
-          href={`/drivers/${driver.id}`}
-          className="text-2xl font-semibold text-blue-900"
-        >
-          {driver.name}, {driver.licensePlate}
-        </Link>
+        <div key={driver.id} className="flex flex-row items-center gap-5">
+          <Link href={`/drivers/qr/${driver.id}`}>
+            <Button variant={"outline"}>
+              <QrCode />
+            </Button>
+          </Link>
+          <Link href={`/drivers/${driver.id}`}>
+            <u className="text-3xl hover:text-blue-900">
+              Driver {driver.name}, {driver.licensePlate}
+            </u>
+          </Link>
+        </div>
       ))}
     </div>
   );
