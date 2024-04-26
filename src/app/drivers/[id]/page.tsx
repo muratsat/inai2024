@@ -40,10 +40,12 @@ async function DriverInfo({ id }: { id: number }) {
           Driver {driver.name}, {driver.licensePlate}
         </h1>
       </div>
-      <div className="max-w-4xl rounded-lg bg-gradient-to-br from-[#dee3ff] to-[#ffcfef] p-5 text-xl">
-        <h1 className="text-xl font-extrabold text-violet-900"> AI Summary</h1>
-        <b> {aiSummary} </b>
-      </div>
+      {aiSummary && (
+        <div className="max-w-4xl rounded-lg bg-gradient-to-br from-[#dee3ff] to-[#ffcfef] p-5 text-xl">
+          <h1 className="text-xl font-extrabold text-violet-900">AI Summary</h1>
+          <b> {aiSummary} </b>
+        </div>
+      )}
 
       {driver.reviews.length > 0 && (
         <div className="flex flex-row items-center gap-2">

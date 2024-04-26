@@ -49,6 +49,8 @@ export const driverRouter = createTRPCRouter({
         columns: { comment: true },
       });
 
+      if (reviews.length === 0) return null;
+
       const packed = reviews
         .filter((x) => x !== null)
         .map((x) => x.comment)
