@@ -30,7 +30,12 @@ export default async function Navbar() {
 import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
 // import { Label } from "@/components/ui/label";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { AlignLeft, Bus } from "lucide-react";
 import { getServerAuthSession } from "@/server/auth";
 
@@ -44,11 +49,17 @@ export async function MobileMenu() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
-        <Link href="/"> Home </Link>
-        <Link href="/drivers"> All Drivers</Link>
-        <div className="flex flex-row items-center gap-4 ">
-          {session && <Link href="/drivers/add"> Add drivers </Link>}
-        </div>
+        <SheetClose asChild>
+          <Link href="/"> Home </Link>
+        </SheetClose>
+        <SheetClose asChild>
+          <Link href="/drivers"> All Drivers</Link>
+        </SheetClose>
+        {session && (
+          <SheetClose asChild>
+            <Link href="/drivers/add"> Add drivers </Link>
+          </SheetClose>
+        )}
       </SheetContent>
     </Sheet>
   );

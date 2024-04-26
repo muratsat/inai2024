@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { QrCode, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getServerAuthSession } from "@/server/auth";
 
 export default async function Home({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
