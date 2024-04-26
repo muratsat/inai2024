@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { QrCode, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getServerAuthSession } from "@/server/auth";
 
 export default async function Home({ params }: { params: { id: string } }) {
   const id = parseInt(params.id);
@@ -25,6 +26,8 @@ async function DriverInfo({ id }: { id: number }) {
     driver.reviews.reduce((prev, b) => prev + b.stars, 0) /
     driver.reviews.length;
 
+  const aiSummary = await api.driver.getAISummary({ id: id });
+
   return (
     <div className="container flex flex-col items-center justify-center gap-10 px-4 py-16 ">
       <div className="flex flex-row items-center justify-center gap-5">
@@ -37,6 +40,11 @@ async function DriverInfo({ id }: { id: number }) {
           Driver {driver.name}, {driver.licensePlate}
         </h1>
       </div>
+      <div className="max-w-4xl rounded-lg bg-gradient-to-br from-[#dee3ff] to-[#ffcfef] p-5 text-xl">
+        <h1 className="text-xl font-extrabold text-violet-900"> AI Summary</h1>
+        <b> {aiSummary} </b>
+      </div>
+
       {driver.reviews.length > 0 && (
         <div className="flex flex-row items-center gap-2">
           {Array.from([1, 2, 3, 4, 5]).map((star) => (

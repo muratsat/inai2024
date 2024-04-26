@@ -45,6 +45,7 @@ export async function MobileMenu() {
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
         <Link href="/"> Home </Link>
+        <Link href="/drivers"> All Drivers</Link>
         <div className="flex flex-row items-center gap-4 ">
           {session && <Link href="/drivers/add"> Add drivers </Link>}
         </div>

@@ -6,11 +6,15 @@ export default async function Home() {
           Safe <span className="text-[hsl(280,100%,70%)]">Bus</span>
         </h1>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl">
+          <p className="text-3xl font-bold">
             To add a review about your driver, scan the qr code located in the
             cabin
           </p>
         </div>
+        <div
+          id="blob"
+          className="absolute bottom-20 -z-10 h-[45vh] w-[60vh] rounded-full  bg-gradient-to-br from-[#ff4eff] to-[#8463bf] blur-3xl duration-[3000ms]"
+        ></div>
       </div>
     </main>
   );

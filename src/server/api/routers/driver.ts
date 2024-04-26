@@ -7,6 +7,7 @@ import {
 } from "@/server/api/trpc";
 import { driver, review } from "@/server/db/schema";
 import { asc, eq } from "drizzle-orm";
+import { OpenAiSummary } from "@/lib/openai";
 
 export const driverRouter = createTRPCRouter({
   create: protectedProcedure
@@ -38,6 +39,23 @@ export const driverRouter = createTRPCRouter({
           reviews: true,
         },
       });
+    }),
+
+  getAISummary: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ ctx, input }) => {
+      const reviews = await ctx.db.query.review.findMany({
+        where: eq(review.driverId, input.id),
+        columns: { comment: true },
+      });
+
+      const packed = reviews
+        .filter((x) => x !== null)
+        .map((x) => x.comment)
+        .join("; ");
+
+      const summary = await OpenAiSummary(packed);
+      return summary;
     }),
 
   getAll: publicProcedure.query(async ({ ctx }) => {
