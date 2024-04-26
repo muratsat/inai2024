@@ -1,10 +1,5 @@
-# TODO
+How to run?
 
-## Web
-
-- [x] Basic auth
-- [ ] Restrict auth only to one email
-- [x] Add driver's table
-- [x] Register driver
-- [x] Add feedback table
-- [x] Shadcn ui
+1. Copy `.env.example` to `.env` and fill out all the necessary keys
+2. Run `pnpm dev`
+3. Done
