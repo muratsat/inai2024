@@ -1,4 +1,3 @@
-import { RateDriverForm } from "@/app/_components/rate";
 import { api } from "@/trpc/server";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -9,10 +8,15 @@ export default async function Home({ params }: { params: { id: string } }) {
   const driver = await api.driver.getById({ id: parseInt(params.id) });
   if (!driver) notFound();
 
-  const reviewPageUrl = `${process.env.VERCEL_URL ?? "http://192.168.88.13:3000"}/drivers/rate/${id}`;
+  const baseUrl =
+    env.NODE_ENV == "production"
+      ? "https://inai2024.vercel.app"
+      : "http://192.168.88.13:3000";
+
+  const reviewPageUrl = `${baseUrl}/drivers/rate/${id}`;
 
   const qrCodeUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+    "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
     encodeURIComponent(reviewPageUrl);
 
   return (
