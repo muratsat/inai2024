@@ -4,13 +4,7 @@
 
 - [x] Basic auth
 - [ ] Restrict auth only to one email
-- [ ] Add driver's table
-- [ ] Register driver
-- [ ] Add feedback table
+- [x] Add driver's table
+- [x] Register driver
+- [x] Add feedback table
 - [x] Shadcn ui
-
-## Mobile
-
-- [ ] Initialize
-- [ ] Qr code scan
-- [ ] Post to endpoint

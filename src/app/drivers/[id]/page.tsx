@@ -79,7 +79,7 @@ function ReviewCard({
   comment: string | null;
 }) {
   return (
-    <div className="flex flex-col rounded-xl bg-white p-6">
+    <div className="flex flex-col rounded-xl bg-white p-6 text-2xl">
       {comment}
       <div className="flex flex-row ">
         {Array.from([1, 2, 3, 4, 5]).map((star) => (
