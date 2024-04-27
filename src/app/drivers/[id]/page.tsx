@@ -10,7 +10,7 @@ export default async function Home({ params }: { params: { id: string } }) {
 
   return (
     <main className="flex  flex-col items-center ">
-      <Suspense fallback={"Loading..."}>
+      <Suspense fallback={<div className="p-5"> Loading... </div>}>
         <DriverInfo id={id} />
       </Suspense>
     </main>
@@ -42,7 +42,7 @@ async function DriverInfo({ id }: { id: number }) {
         </h1>
       </div>
       {aiSummary && (
-        <div className="max-w-4xl rounded-lg bg-gradient-to-br from-[#dee3ff] to-[#ffcfef] p-5 text-xl">
+        <div className="max-w-4xl rounded-lg bg-gradient-to-br from-[#dee3ff] to-[#ffcfef] p-9 text-xl">
           <h1 className="text-xl font-extrabold text-violet-900">AI Summary</h1>
           <b> {aiSummary} </b>
         </div>
@@ -63,7 +63,7 @@ async function DriverInfo({ id }: { id: number }) {
 
       <div className="flex flex-col items-center gap-5">
         {driver.reviews.length > 0 ? (
-          <h1 className="max-w-xl text-xl">{driver.name}'s reviews</h1>
+          <h1 className="max-w-xl text-xl"> Reviews about {driver.name} </h1>
         ) : (
           <h1 className="max-w-xl text-xl">
             {driver.name} doesn't have reviews yet

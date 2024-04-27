@@ -13,7 +13,7 @@ export default async function Home() {
         </div>
         <div
           id="blob"
-          className="absolute bottom-20 -z-10 h-[45vh] w-[60vh] rounded-full  bg-gradient-to-br from-[#ff98ff] to-[#8463bf] blur-3xl duration-[3000ms]"
+          className="absolute bottom-20 -z-10 h-[45vh] w-[70vh] rounded-full  bg-gradient-to-br from-[#db9adb] to-[#8b6bc2] blur-3xl duration-[3000ms]"
         ></div>
       </div>
     </main>
