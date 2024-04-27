@@ -61,11 +61,13 @@ async function DriverInfo({ id }: { id: number }) {
         </div>
       )}
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col items-center gap-5">
         {driver.reviews.length > 0 ? (
-          <h1 className="text-xl">{driver.name}'s reviews</h1>
+          <h1 className="max-w-xl text-xl">{driver.name}'s reviews</h1>
         ) : (
-          <h1 className="text-xl">{driver.name} doesn't have reviews yet</h1>
+          <h1 className="max-w-xl text-xl">
+            {driver.name} doesn't have reviews yet
+          </h1>
         )}
         <Link href={`/drivers/rate/${driver.id}`}>
           <Button> Leave a review</Button>
@@ -90,7 +92,7 @@ function ReviewCard({
   comment: string | null;
 }) {
   return (
-    <div className="flex flex-col rounded-xl bg-[#ffe9ff] p-6 text-2xl">
+    <div className="flex w-full max-w-2xl  flex-col gap-4 rounded-xl bg-[#ffe9ff] p-6 text-2xl">
       {comment}
       <div className="flex flex-row ">
         {Array.from([1, 2, 3, 4, 5]).map((star) => (
