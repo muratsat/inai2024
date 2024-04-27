@@ -70,7 +70,7 @@ async function DriverInfo({ id }: { id: number }) {
           </h1>
         )}
         <Link href={`/drivers/rate/${driver.id}`}>
-          <Button> Leave a review</Button>
+          <Button className="rounded-xl"> Leave a review</Button>
         </Link>
         {driver.reviews.map((review) => (
           <ReviewCard

@@ -19,7 +19,7 @@ export default async function Navbar() {
       </div>
 
       <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
-        <Button className="rounded-xl">
+        <Button className="rounded-xl font-bold">
           {session ? "Sign out" : "Sign in"}
         </Button>
       </Link>
