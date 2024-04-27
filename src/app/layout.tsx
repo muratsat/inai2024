@@ -14,7 +14,7 @@ const inter = Inter({
 export const metadata = {
   title: "Inai 2024 ",
   description: "Coded by Murat",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/icon.svg" }],
 };
 
 export default function RootLayout({
