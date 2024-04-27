@@ -35,8 +35,10 @@ async function DriverInfo({ id }: { id: number }) {
             <QrCode />
           </Button>
         </Link>
-        <h1 className="text-3xl">
-          Driver {driver.name}, {driver.licensePlate}
+        <h1 className="text-4xl">
+          Driver{" "}
+          <span className="font-bold text-violet-900"> {driver.name} </span>,{" "}
+          {driver.licensePlate}
         </h1>
       </div>
       {aiSummary && (
@@ -52,7 +54,7 @@ async function DriverInfo({ id }: { id: number }) {
             <Star
               key={star}
               size={30}
-              fill={star <= averageStars ? "Yellow" : undefined}
+              fill={star <= averageStars ? "Violet" : undefined}
             />
           ))}
           <h1 className="text-2xl"> {Math.round(averageStars * 100) / 100} </h1>
@@ -95,7 +97,7 @@ function ReviewCard({
           <Star
             key={star}
             size={30}
-            fill={star <= stars ? "Yellow" : undefined}
+            fill={star <= stars ? "Violet" : undefined}
           />
         ))}
       </div>

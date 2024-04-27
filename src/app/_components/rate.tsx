@@ -88,7 +88,7 @@ export function RateDriverForm({ id, name }: RateDriverProps) {
                   >
                     <Star
                       size={35}
-                      fill={stars >= value ? "Yellow" : undefined}
+                      fill={stars >= value ? "Violet" : undefined}
                     />
                   </button>
                 ))}

@@ -6,9 +6,9 @@ export default async function Home() {
           Safe <span className="text-[hsl(280,100%,70%)]">Bus</span>
         </h1>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-3xl font-bold">
-            To add a review about your driver, scan the qr code located in the
-            cabin
+          <p className="max-w-4xl text-5xl font-extrabold text-gray-800">
+            Gather passenger feedback on public transport experiences to improve
+            safety and comfort for all.
           </p>
         </div>
         <div
