@@ -3,7 +3,7 @@ on:
     - cron: "0-59 * * * *"
 
 jobs:
-  test_schedule:
+  every_minute:
     runs-on: ubuntu-latest
     steps:
       - name: Every minute
