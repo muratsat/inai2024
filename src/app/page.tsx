@@ -11,10 +11,6 @@ export default async function Home() {
             safety and comfort for all.
           </p>
         </div>
-        <div
-          id="blob"
-          className="absolute bottom-20 -z-10 h-[45vh] w-[70vh] rounded-full  bg-gradient-to-br from-[#f796e0] to-[#db9adb] blur-3xl duration-[3000ms]"
-        ></div>
       </div>
     </main>
   );
