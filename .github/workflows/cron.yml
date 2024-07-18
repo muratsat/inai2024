@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "0-59 * * * *"
 
 jobs:
   test_schedule:
