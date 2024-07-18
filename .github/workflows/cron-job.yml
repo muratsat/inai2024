@@ -1,3 +1,5 @@
+name: Cron Jobs
+
 on:
   schedule:
     - cron: "0-59 * * * *"
