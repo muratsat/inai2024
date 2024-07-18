@@ -1,0 +1,12 @@
+name: Cron Jobs
+
+on:
+  schedule:
+    - cron: "0-59 * * * *"
+
+jobs:
+  every_minute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every minute
+        run: curl ${{ secrets.BASE_URL}}/api/cron
