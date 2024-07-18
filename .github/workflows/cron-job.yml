@@ -2,7 +2,7 @@ name: Cron Jobs
 
 on:
   schedule:
-    - cron: "0-59 * * * *"
+    - cron: "*/5 * * * *"
 
 jobs:
   every_minute:
